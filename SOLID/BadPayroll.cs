@@ -2,12 +2,23 @@
 
 namespace SOLID
 {
-    public enum EmployeeType { Commissioned, Hourley, Salaried }
-    public enum PayDelivery { MailCheck, DirectDeposit }
+    public enum EmployeeType
+    {
+        Commissioned,
+        Hourley,
+        Salaried
+    }
+
+    public enum PayDelivery
+    {
+        MailCheck,
+        DirectDeposit
+    }
 
     public class BadPayroll
     {
         public EmployeeType Type;
+
         public BadPayroll(EmployeeType type)
         {
             Type = type;
@@ -30,8 +41,10 @@ namespace SOLID
                     pay = 0m;
                     break;
             }
+
             return pay;
         }
+
         public bool IsPayDay(DateTime dt)
         {
             var isPayDay = true;
@@ -48,23 +61,23 @@ namespace SOLID
                     isPayDay = false;
                     break;
             }
-            return isPayDay;
 
+            return isPayDay;
         }
+
         public PayDelivery GetPayDelivery()
         {
             switch (Type)
             {
                 case EmployeeType.Commissioned:
-                    return PayDelivery.MailCheck;                    
+                    return PayDelivery.MailCheck;
                 case EmployeeType.Hourley:
-                    return PayDelivery.DirectDeposit;                
+                    return PayDelivery.DirectDeposit;
                 case EmployeeType.Salaried:
                     return PayDelivery.DirectDeposit;
                 default:
                     return PayDelivery.DirectDeposit;
             }
-
         }
     }
 }
